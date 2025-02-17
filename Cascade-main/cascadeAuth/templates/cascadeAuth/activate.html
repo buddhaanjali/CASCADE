@@ -1,0 +1,4 @@
+<!--Email sent to the user to their respective emails to register them-->
+Hi {{ user.username }},
+Please click on the link below to activate your account:
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}

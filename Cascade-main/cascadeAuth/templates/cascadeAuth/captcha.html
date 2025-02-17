@@ -1,0 +1,29 @@
+<!--Captcha page template-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cascadeAuth/style.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-wrapper otp">
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                <h2 class="h2">Enter the Captcha</h2>
+                <br><br>
+                <div class="input-group">
+                    <label for="captcha">Captcha</label>
+                    {{ captcha_form.captcha }}
+                </div>
+                <button type="submit">Verify</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

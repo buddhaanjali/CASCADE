@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Questions</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cascadeAuth/style.css' %}">
+    <style>
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0px;
+            margin-top: 0px;
+            box-sizing: border-box;
+        }
+        .input-group label {
+            margin-bottom: 2px;
+            font-weight: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-wrapper security-questions">
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <h2 class="h2">Answer the Security Questions</h2><br><br>
+                <div class="input-group">
+                    {{ security_question_form.security_question_1 }}
+                    <div class="error">
+                        {{ security_question_form.security_question_1.errors }}
+                    </div>
+                </div>
+                <div class="input-group">
+                    {{ security_question_form.security_answer_1 }}
+                    <div class="error">
+                        {{ security_question_form.security_answer_1.errors }}
+                    </div>
+                    <label for="id_security_answer_1">Answer 1</label>
+                </div>
+                <div class="input-group">
+                    {{ security_question_form.security_question_2 }}
+                    <div class="error">
+                        {{ security_question_form.security_question_2.errors }}
+                    </div>
+                </div>
+                <div class="input-group">
+                    {{ security_question_form.security_answer_2 }}
+                    <div class="error">
+                        {{ security_question_form.security_answer_2.errors }}
+                    </div>
+                    <label for="id_security_answer_2">Answer 2</label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

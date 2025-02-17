@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cascadeAuth/style.css' %}">
+    <style>
+        .messages {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-wrapper otp">
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <h2 class="h2">Enter the OTP received on your registered Email Id</h2><br><br>
+                <div class="input-group">
+                    <input type="text" id="otp" name="otp" required>
+                    <label for="otp">OTP</label>
+                </div>
+                <button type="submit">Verify</button>
+                <div class="signup-link">
+                    <p>Didn't receive an OTP? <a href="{% url 'otp' %}" style="color: white;"><i>Resend OTP</i></a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

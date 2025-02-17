@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cascadeAuth/style.css' %}">
+    <style>
+        /* Additional CSS styles specific to this page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Adjust background color as needed */
+        }
+
+        .dashboard-content {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ffffff; /* Adjust text color as needed */
+            margin-bottom: 20px;
+        }
+
+        .logout-button {
+            margin-top: 20px;
+        }
+
+        .logout-button input[type="submit"] {
+            background-color: #5bd1d5;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button input[type="submit"]:hover {
+            background-color: #43898c;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-content">
+        <h1>Welcome to Cascade!</h1>
+        <h1>-.-. .- ... -.-. .- -.. .</h1>
+        <div class="logout-button">
+            <a href="{% url 'logout' %}">
+                <input id="button" type="submit" value="Logout" />
+            </a>
+        </div>
+    </div>
+</body>
+</html>
